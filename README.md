@@ -1,2 +1,36 @@
 # Thuesday
-Monday clone
+
+Simple Monday-like clone built with Next.js and SQLite.
+
+## Setup
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Copy `.env.example` to `.env` and adjust values if needed
+
+```bash
+cp .env.example .env
+```
+
+3. Run the development server
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:3000` in your browser.
+
+## Features
+
+- User registration and login
+- Create boards
+- Add items to boards
+- Click item to cycle status between `todo`, `in-progress`, and `done`
+- Double-click item to delete it
+- Uses SQLite database defined by `DATABASE_URL`
+
+This project is for demonstration only and not production ready.
