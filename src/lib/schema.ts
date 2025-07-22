@@ -17,4 +17,18 @@ export const items = mysqlTable('items', {
   boardId: int('board_id'),
   text: varchar('text', { length: 255 }).notNull(),
   status: varchar('status', { length: 50 }).notNull(),
+  parentId: int('parent_id'),
+});
+
+export const columns = mysqlTable('columns', {
+  id: serial('id').primaryKey(),
+  boardId: int('board_id'),
+  name: varchar('name', { length: 255 }).notNull(),
+});
+
+export const columnValues = mysqlTable('column_values', {
+  id: serial('id').primaryKey(),
+  itemId: int('item_id'),
+  columnId: int('column_id'),
+  value: varchar('value', { length: 255 }).notNull(),
 });

@@ -26,8 +26,26 @@ await pool.query(`
     id INT AUTO_INCREMENT PRIMARY KEY,
     board_id INT,
     text VARCHAR(255),
-    status VARCHAR(50)
+    status VARCHAR(50),
+    parent_id INT
   ) ENGINE=InnoDB;
 `);
 
-export const { users, boards, items } = schema;
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS columns (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    board_id INT,
+    name VARCHAR(255)
+  ) ENGINE=InnoDB;
+`);
+
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS column_values (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    item_id INT,
+    column_id INT,
+    value VARCHAR(255)
+  ) ENGINE=InnoDB;
+`);
+
+export const { users, boards, items, columns, columnValues } = schema;

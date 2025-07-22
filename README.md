@@ -31,6 +31,8 @@ Open `http://localhost:3000` in your browser.
 - Add items to boards
 - Click item to cycle status between `todo`, `in-progress`, and `done`
 - Double-click item to delete it
+- Create custom columns for boards
+- Add sub items nested under items
 - Uses MariaDB database defined by `DATABASE_URL`
 
 This project is for demonstration only and not production ready.
