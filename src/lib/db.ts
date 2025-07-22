@@ -2,8 +2,9 @@ import mysql from 'mysql2/promise';
 import { drizzle } from 'drizzle-orm/mysql2';
 import * as schema from './schema';
 
+console.log('Connecting to database...', process.env.DATABASE_URL || 'default connection string');
 const pool = mysql.createPool(process.env.DATABASE_URL || '');
-export const db = drizzle(pool, { schema });
+export const db = drizzle(pool, { schema, mode: 'default', logger: true });
 
 // Ensure tables exist
 await pool.query(`
