@@ -1,26 +1,32 @@
-import Database from 'better-sqlite3';
+import mysql from 'mysql2/promise';
+import { drizzle } from 'drizzle-orm/mysql2';
+import * as schema from './schema';
 
-const dbFile = process.env.DATABASE_URL || 'monday_clone.db';
+const pool = mysql.createPool(process.env.DATABASE_URL || '');
+export const db = drizzle(pool, { schema });
 
-const db = new Database(dbFile);
-
-db.exec(`
-CREATE TABLE IF NOT EXISTS users (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE,
-  password TEXT
-);
-CREATE TABLE IF NOT EXISTS boards (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT,
-  user_id INTEGER
-);
-CREATE TABLE IF NOT EXISTS items (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  board_id INTEGER,
-  text TEXT,
-  status TEXT
-);
+// Ensure tables exist
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) UNIQUE,
+    password VARCHAR(255)
+  ) ENGINE=InnoDB;
+`);
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS boards (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    user_id INT
+  ) ENGINE=InnoDB;
+`);
+await pool.query(`
+  CREATE TABLE IF NOT EXISTS items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    board_id INT,
+    text VARCHAR(255),
+    status VARCHAR(50)
+  ) ENGINE=InnoDB;
 `);
 
-export default db;
+export const { users, boards, items } = schema;

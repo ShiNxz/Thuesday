@@ -1,6 +1,6 @@
 # Thuesday
 
-Simple Monday-like clone built with Next.js and SQLite.
+Simple Monday-like clone built with Next.js and MariaDB via Drizzle ORM.
 
 ## Setup
 
@@ -10,7 +10,7 @@ Simple Monday-like clone built with Next.js and SQLite.
 npm install
 ```
 
-2. Copy `.env.example` to `.env` and adjust values if needed
+2. Copy `.env.example` to `.env` and set `DATABASE_URL` to your MariaDB connection string
 
 ```bash
 cp .env.example .env
@@ -31,6 +31,6 @@ Open `http://localhost:3000` in your browser.
 - Add items to boards
 - Click item to cycle status between `todo`, `in-progress`, and `done`
 - Double-click item to delete it
-- Uses SQLite database defined by `DATABASE_URL`
+- Uses MariaDB database defined by `DATABASE_URL`
 
 This project is for demonstration only and not production ready.

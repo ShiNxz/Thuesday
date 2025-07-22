@@ -26,14 +26,16 @@ export default function BoardsPage() {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl mb-4">Boards</h1>
-      <ul className="flex flex-col gap-2">
+    <div className="p-6 max-w-xl mx-auto space-y-4">
+      <h1 className="text-3xl font-bold">Boards</h1>
+      <ul className="flex flex-col gap-3">
         {boards.map(b => (
-          <li key={b.id}><Link href={`/boards/${b.id}`}>{b.name}</Link></li>
+          <li key={b.id} className="border rounded p-3 hover:bg-gray-50 dark:hover:bg-gray-800">
+            <Link href={`/boards/${b.id}`}>{b.name}</Link>
+          </li>
         ))}
       </ul>
-      <button onClick={createBoard} className="mt-4 bg-blue-500 text-white px-2 py-1">New Board</button>
+      <button onClick={createBoard} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded">New Board</button>
     </div>
   );
 }

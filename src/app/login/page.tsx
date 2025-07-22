@@ -17,10 +17,10 @@ export default function Login() {
     else alert('Invalid credentials');
   }
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-xs mx-auto mt-10">
-      <input className="border p-2" placeholder="Username" value={username} onChange={e=>setUsername(e.target.value)} />
-      <input type="password" className="border p-2" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} />
-      <button className="bg-blue-500 text-white p-2" type="submit">Login</button>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-sm mx-auto mt-16 p-6 border rounded bg-white shadow">
+      <input className="border rounded p-2" placeholder="Username" value={username} onChange={e=>setUsername(e.target.value)} />
+      <input type="password" className="border rounded p-2" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} />
+      <button className="bg-blue-600 hover:bg-blue-700 text-white rounded p-2" type="submit">Login</button>
     </form>
   );
 }

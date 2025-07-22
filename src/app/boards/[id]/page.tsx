@@ -51,19 +51,22 @@ export default function BoardPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl mb-4">Items</h1>
-      <ul className="flex flex-col gap-2">
+    <div className="p-6 max-w-xl mx-auto space-y-4">
+      <h1 className="text-3xl font-bold">Items</h1>
+      <ul className="space-y-2">
         {items.map(item => (
-          <li key={item.id}
-              className="cursor-pointer select-none"
-              onClick={() => cycleStatus(item)}
-              onDoubleClick={() => deleteItem(item.id)}>
-            {item.text} - {item.status}
+          <li
+            key={item.id}
+            className="border rounded p-2 cursor-pointer select-none hover:bg-gray-50 dark:hover:bg-gray-800"
+            onClick={() => cycleStatus(item)}
+            onDoubleClick={() => deleteItem(item.id)}
+          >
+            <span className="mr-2">{item.text}</span>
+            <span className="text-sm text-gray-500">({item.status})</span>
           </li>
         ))}
       </ul>
-      <button onClick={addItem} className="mt-4 bg-blue-500 text-white px-2 py-1">Add Item</button>
+      <button onClick={addItem} className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded">Add Item</button>
     </div>
   );
 }
